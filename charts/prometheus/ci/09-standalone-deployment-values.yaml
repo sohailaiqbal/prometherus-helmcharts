@@ -15,4 +15,4 @@ prometheus-pushgateway:
 server:
   automountServiceAccountToken: true
   persistentVolume:
-    enabled: false
+    enabled: true
