@@ -10,15 +10,15 @@ metadata:
 {{ toYaml .Values.podSecurityPolicy.annotations | indent 4 }}
 {{- end }}
 spec:
-  privileged: false
+  privileged: true
   volumes:
     - 'secret'
 {{- if .Values.podSecurityPolicy.additionalVolumes }}
 {{ toYaml .Values.podSecurityPolicy.additionalVolumes | indent 4 }}
 {{- end }}
-  hostNetwork: false
-  hostIPC: false
-  hostPID: false
+  hostNetwork: true
+  hostIPC: true
+  hostPID: true
   runAsUser:
     rule: 'MustRunAsNonRoot'
   seLinux:
@@ -35,5 +35,5 @@ spec:
       # Forbid adding the root group.
       - min: 1
         max: 65535
-  readOnlyRootFilesystem: false
+  readOnlyRootFilesystem: true
 {{- end }}
